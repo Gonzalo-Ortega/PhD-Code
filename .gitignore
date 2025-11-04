@@ -1,3 +1,9 @@
-
+# Python artifacts
 __pycache__/
-Finite_Spaces/
+
+# Packaging
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
