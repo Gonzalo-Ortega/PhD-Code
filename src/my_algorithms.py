@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
-
-
 from sage.all import *
 import gudhi as gd
 
@@ -93,9 +91,6 @@ def plot_points(points, n):
         plt.show()
     else:
         raise ValueError("Plotting is only supported for n = 1, 2, or 3")
-
-
-
 
 
 def plot_filtration(simplices, points, dim=2, steps=None, labels=None):
@@ -194,20 +189,19 @@ def _get_label(option, step, value):
     if option == 'step':
         return f"Step {step}"
     elif option == 'value':
-        return f"Val {value:.3f}"
+        return f" {value:.2f}"
     elif option == 'both':
         return f"Step {step}\nVal {value:.3f}"
     return ""
 
 
-def get_random_filtration():
-
-    return
-
-def manual_persitent_fundamental_group():
-    
-    return
-
-#filtration = gd.SimplexTree()
-
+def get_sage_simplicial_complex(simplices, max_step=1):
+    simplices_list = []
+    for simplex, step in simplices:
+        if step <= max_step:
+            simplex_list = []
+            for i in simplex:
+                simplex_list.append(Integer(i))
+            simplices_list.append(simplex_list)
+    return SimplicialComplex(simplices_list)
 
